@@ -64,13 +64,8 @@ class StreamStopView(APIView):
     def post(self, request, stream_id):
         stopped = stop_stream(stream_id)
 
-        if not stopped:
-            return Response(
-                {"error": "Stream not found."},
-                status=status.HTTP_404_NOT_FOUND,
-            )
-
         return Response({
             "stream_id": stream_id,
             "status": "stopped",
-        })
+            "message": "Stream stopped successfully." if stopped else "Stream already stopped or not active.",
+        }, status=status.HTTP_200_OK)

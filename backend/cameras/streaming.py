@@ -23,7 +23,8 @@ STREAM_LOCK = threading.Lock()
 
 def validate_stream_url(stream_url: str) -> str:
     """Allow RTSP, HTTP, and HTTPS URLs pointing to private IPv4 addresses on the LAN or localhost."""
-    parsed = urlparse(stream_url.strip())
+    cleaned = stream_url.strip().rstrip('.')
+    parsed = urlparse(cleaned)
 
     if parsed.scheme.lower() not in ("rtsp", "http", "https"):
         raise ValueError("Only rtsp://, http://, and https:// stream URLs are supported.")
@@ -51,7 +52,7 @@ def validate_stream_url(stream_url: str) -> str:
     ):
         raise ValueError("The camera must use a private LAN IPv4 address or localhost.")
 
-    return stream_url.strip()
+    return cleaned
 
 
 def start_stream(stream_id: str, rtsp_url: str) -> dict:

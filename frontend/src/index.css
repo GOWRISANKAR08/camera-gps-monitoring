@@ -1,66 +1,101 @@
-
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
 :root {
-  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
   color: #e2e8f0;
-  background: #07111f;
+  background: #060b14;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-optical-sizing: auto;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  min-width: 320px;
-  min-height: 100%;
-  background: #07111f;
-}
-
-body {
+html, body {
   margin: 0;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: #060b14;
+  color: #f1f5f9;
 }
 
-button,
-input {
-  font: inherit;
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1325;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
 
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-}
-
+/* Leaflet Container Styling */
 .leaflet-container {
   width: 100%;
   height: 100%;
-  background: #09162b;
+  background: #070e1c !important;
   font-family: inherit;
+  isolation: isolate;
+  position: relative;
+  z-index: 0 !important;
 }
 
 .leaflet-control-attribution {
-  font-size: 9px !important;
-  background: rgba(7, 17, 31, 0.85) !important;
-  color: #94a3b8 !important;
+  font-size: 8px !important;
+  background: rgba(6, 11, 20, 0.75) !important;
+  color: #64748b !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
 }
 
 .leaflet-control-attribution a {
-  color: #67e8f9 !important;
+  color: #38bdf8 !important;
+  text-decoration: none !important;
 }
 
-.leaflet-control-zoom a {
-  background: #0d192f !important;
-  color: #e2e8f0 !important;
-  border-color: #1d3153 !important;
+.leaflet-control-zoom {
+  display: none !important; /* We use custom styled control buttons */
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0b1325 !important;
+  color: #f8fafc !important;
+  border: 1px solid #1a2744 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6) !important;
+}
+
+.leaflet-popup-tip {
+  background: #0b1325 !important;
+}
+
+/* Subtle glow pulse */
+@keyframes beaconPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 229, 255, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+  }
+}
+
+.beacon-pulse {
+  animation: beaconPulse 2s infinite;
 }
