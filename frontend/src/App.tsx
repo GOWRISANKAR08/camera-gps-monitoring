@@ -11,7 +11,6 @@ import {
 import L from 'leaflet'
 import {
   Camera,
-  Truck,
   ChevronDown,
   Zap,
   Gem,
@@ -33,7 +32,6 @@ import {
   Navigation,
   RefreshCw,
   X,
-  Check,
   ShieldCheck,
   Cpu,
   ArrowUpDown,
@@ -45,22 +43,8 @@ import { api, type Camera as ApiCamera } from './services/api'
 import CameraStream from './components/CameraStream'
 
 type Point = [number, number]
-type CameraType = 'USB / Webcam' | 'RTSP Camera' | 'External / IP'
+type CameraType = 'USB / Webcam' | 'RTSP Camera'
 type TrackingState = 'Idle' | 'Tracking' | 'Paused' | 'Stopped'
-
-interface FleetUnit {
-  id: string
-  name: string
-  vehicleNumber: string
-  status: string
-  driver: string
-}
-
-const FLEET_UNITS: FleetUnit[] = [
-  { id: 'unit-1', name: 'Fleet Scout Alpha', vehicleNumber: 'VEHICLE #104', status: 'Online', driver: 'Alex Mercer' },
-  { id: 'unit-2', name: 'Fleet Scout Bravo', vehicleNumber: 'VEHICLE #208', status: 'Online', driver: 'Marcus Vance' },
-  { id: 'unit-3', name: 'Heavy Hauler Delta', vehicleNumber: 'VEHICLE #312', status: 'Standby', driver: 'Elena Rostova' },
-]
 
 // Vancouver route waypoints matching the screenshot
 const ROUTE_WAYPOINTS: Point[] = [
@@ -321,9 +305,6 @@ function MapController({
 }
 
 export default function App() {
-  // Navigation / Units
-  const [activeUnit, setActiveUnit] = useState<FleetUnit>(FLEET_UNITS[0])
-  const [unitMenuOpen, setUnitMenuOpen] = useState(false)
   const [notificationsOpen, setNotificationsOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [cameraModalOpen, setCameraModalOpen] = useState(false)
@@ -850,7 +831,7 @@ export default function App() {
       {/* ============================================================== */}
       <header className="border-b border-[#141f36] bg-[#070e1c] px-4 py-3 sm:px-6">
         <div className="mx-auto flex flex-wrap items-center justify-between gap-4">
-          {/* Left Brand & Unit */}
+          {/* Left Brand */}
           <div className="flex flex-wrap items-center gap-3.5">
             {/* Cyan camera logo button */}
             <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-500/40 bg-cyan-950/40 text-[#00e5ff] shadow-[0_0_15px_rgba(0,229,255,0.2)]">
@@ -866,47 +847,6 @@ export default function App() {
                 </span>
               </div>
               <p className="text-[11px] font-medium text-slate-400">Live Video & Route Telemetry</p>
-            </div>
-
-            {/* Active Unit Pill Dropdown */}
-            <div className="relative ml-2">
-              <button
-                type="button"
-                onClick={() => setUnitMenuOpen(v => !v)}
-                className="flex items-center gap-2 rounded-full border border-slate-800 bg-[#0c1527] px-3.5 py-1.5 text-xs text-slate-300 transition-all hover:border-slate-700 hover:text-white"
-              >
-                <Truck size={14} className="text-[#00e5ff]" />
-                <span className="text-slate-400">Active Unit:</span>
-                <span className="font-semibold text-white">{activeUnit.name}</span>
-                <ChevronDown size={13} className="text-slate-400" />
-              </button>
-
-              {unitMenuOpen && (
-                <div className="absolute left-0 top-full z-50 mt-1.5 w-60 rounded-xl border border-[#1a2744] bg-[#0c1527] py-1.5 shadow-2xl backdrop-blur-md">
-                  <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Switch Fleet Unit
-                  </div>
-                  {FLEET_UNITS.map(unit => (
-                    <button
-                      key={unit.id}
-                      type="button"
-                      onClick={() => {
-                        setActiveUnit(unit)
-                        setUnitMenuOpen(false)
-                      }}
-                      className={`flex w-full items-center justify-between px-3 py-2 text-left text-xs transition-colors hover:bg-slate-800/60 ${
-                        activeUnit.id === unit.id ? 'bg-cyan-950/40 text-[#00e5ff]' : 'text-slate-300'
-                      }`}
-                    >
-                      <div>
-                        <p className="font-semibold">{unit.name}</p>
-                        <p className="text-[10px] text-slate-500">{unit.vehicleNumber} • {unit.driver}</p>
-                      </div>
-                      {activeUnit.id === unit.id && <Check size={14} className="text-[#00e5ff]" />}
-                    </button>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
 
@@ -948,7 +888,7 @@ export default function App() {
                   </div>
                   <div className="space-y-2 text-xs">
                     <div className="rounded-lg bg-slate-900/80 p-2">
-                      <p className="font-semibold text-emerald-400">Fleet Unit #104 Active</p>
+                      <p className="font-semibold text-emerald-400">GPS Stream Active</p>
                       <p className="text-[10px] text-slate-400">Telemetry feed synchronized via NMEA 0183.</p>
                     </div>
                     <div className="rounded-lg bg-slate-900/80 p-2">
@@ -1005,7 +945,7 @@ export default function App() {
                 <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]" />
                 <h2 className="text-sm font-bold tracking-wider text-white">LIVE FEED</h2>
                 <span className="rounded-full border border-cyan-500/30 bg-cyan-950/40 px-2.5 py-0.5 text-[11px] font-medium text-[#00e5ff]">
-                  {cameraType === 'USB / Webcam' ? 'USB Camera' : cameraType === 'RTSP Camera' ? 'RTSP Stream' : 'IP Camera'}
+                  {cameraType === 'USB / Webcam' ? 'USB Camera' : 'RTSP Stream'}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -1772,8 +1712,8 @@ export default function App() {
             </div>
 
             {/* Source Type Selector */}
-            <div className="mb-4 grid grid-cols-3 gap-2">
-              {(['USB / Webcam', 'RTSP Camera', 'External / IP'] as const).map(type => (
+            <div className="mb-4 grid grid-cols-2 gap-2">
+              {(['USB / Webcam', 'RTSP Camera'] as const).map(type => (
                 <button
                   key={type}
                   type="button"
@@ -1789,17 +1729,17 @@ export default function App() {
               ))}
             </div>
 
-            {/* RTSP / IP Input Field */}
-            {cameraType !== 'USB / Webcam' && (
+            {/* RTSP Input Field */}
+            {cameraType === 'RTSP Camera' && (
               <div className="mb-4">
                 <label className="mb-1.5 block text-xs font-medium text-slate-400">
-                  RTSP or Stream Endpoint URL
+                  RTSP Stream URL
                 </label>
                 <input
                   type="text"
                   value={cameraUrl}
                   onChange={e => setCameraUrl(e.target.value)}
-                  placeholder="rtsp://192.168.1.24:8554/live"
+                  placeholder="rtsp://101.0.0.44:8554/live"
                   className="w-full rounded-xl border border-[#1a2744] bg-[#070e1c] px-3.5 py-2.5 font-mono text-xs text-white outline-none focus:border-[#00e5ff]"
                 />
               </div>
@@ -1950,7 +1890,7 @@ export default function App() {
                 <input
                   type="number"
                   step="0.0001"
-                  defaultValue={editingCoords === 'start' ? (startPoint ? startPoint[0] : 49.2785) : (destinationPoint ? destinationPoint[0] : 49.2810)}
+                  defaultValue={editingCoords === 'start' ? (startPoint ? startPoint[0] : 12.9797) : (destinationPoint ? destinationPoint[0] : 12.9916)}
                   id="lat-input"
                   className="w-full rounded-xl border border-[#1a2744] bg-[#070e1c] p-2 text-white outline-none"
                 />
