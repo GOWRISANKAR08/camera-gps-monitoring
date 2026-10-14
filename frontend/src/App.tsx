@@ -829,41 +829,41 @@ export default function App() {
       {/* ============================================================== */}
       {/* TOP NAVBAR / HEADER                                             */}
       {/* ============================================================== */}
-      <header className="border-b border-[#141f36] bg-[#070e1c] px-4 py-3 sm:px-6">
-        <div className="mx-auto flex flex-wrap items-center justify-between gap-4">
+      <header className="border-b border-[#141f36] bg-[#070e1c] px-3 py-2.5 sm:px-6 sm:py-3">
+        <div className="mx-auto flex items-center justify-between gap-2 sm:gap-4">
           {/* Left Brand */}
-          <div className="flex flex-wrap items-center gap-3.5">
+          <div className="flex items-center gap-2 sm:gap-3.5">
             {/* Cyan camera logo button */}
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-500/40 bg-cyan-950/40 text-[#00e5ff] shadow-[0_0_15px_rgba(0,229,255,0.2)]">
-              <Camera size={20} />
+            <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl border border-cyan-500/40 bg-cyan-950/40 text-[#00e5ff] shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+              <Camera className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
 
             {/* Brand Title */}
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-base font-black tracking-wider text-white">MSP-TRACK</span>
-                <span className="rounded border border-cyan-400 bg-cyan-950/50 px-1.5 py-0.5 text-[10px] font-extrabold text-[#00e5ff] tracking-wide">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-sm sm:text-base font-black tracking-wider text-white">MSP-TRACK</span>
+                <span className="rounded border border-cyan-400 bg-cyan-950/50 px-1 sm:px-1.5 py-0.5 text-[9px] sm:text-[10px] font-extrabold text-[#00e5ff] tracking-wide">
                   PRO
                 </span>
               </div>
-              <p className="text-[11px] font-medium text-slate-400">Live Video & Route Telemetry</p>
+              <p className="hidden text-[10px] font-medium text-slate-400 sm:block sm:text-[11px]">Live Video & Route Telemetry</p>
             </div>
           </div>
 
           {/* Right Status & Profile Controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3">
             {/* Status Indicator Pill */}
-            <div className="flex items-center gap-3.5 rounded-full border border-slate-800 bg-[#0c1527] px-4 py-1.5 text-xs">
-              <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 rounded-full border border-slate-800 bg-[#0c1527] px-2.5 py-1 text-[11px] sm:gap-3 sm:px-3.5 sm:py-1.5 sm:text-xs">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]" />
                 <span className="font-semibold text-white">Connected</span>
               </div>
-              <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#00e5ff]">
-                <Gem size={13} />
+              <div className="hidden items-center gap-1 font-mono text-[10px] text-[#00e5ff] md:flex sm:text-[11px]">
+                <Gem size={12} />
                 <span>24ms</span>
               </div>
-              <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#00e5ff]">
-                <Zap size={13} />
+              <div className="hidden items-center gap-1 font-mono text-[10px] text-[#00e5ff] md:flex sm:text-[11px]">
+                <Zap size={12} />
                 <span>30 FPS</span>
               </div>
             </div>
@@ -874,14 +874,14 @@ export default function App() {
                 type="button"
                 onClick={() => setNotificationsOpen(v => !v)}
                 title="Notifications"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 bg-[#0c1527] text-slate-400 transition-colors hover:border-slate-700 hover:text-white"
+                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-slate-800 bg-[#0c1527] text-slate-400 transition-colors hover:border-slate-700 hover:text-white"
               >
-                <Bell size={15} />
-                <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-[#00e5ff]" />
+                <Bell size={14} />
+                <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-[#00e5ff]" />
               </button>
 
               {notificationsOpen && (
-                <div className="absolute right-0 top-full z-50 mt-1.5 w-72 rounded-xl border border-[#1a2744] bg-[#0c1527] p-3 shadow-2xl">
+                <div className="absolute right-0 top-full z-50 mt-1.5 w-64 sm:w-72 rounded-xl border border-[#1a2744] bg-[#0c1527] p-3 shadow-2xl">
                   <div className="mb-2 flex items-center justify-between border-b border-slate-800 pb-2">
                     <span className="text-xs font-bold text-white">System Alerts</span>
                     <span className="text-[10px] text-[#00e5ff]">3 Active</span>
@@ -905,17 +905,17 @@ export default function App() {
               type="button"
               onClick={() => setSettingsOpen(true)}
               title="System Settings"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 bg-[#0c1527] text-slate-400 transition-colors hover:border-slate-700 hover:text-white"
+              className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-slate-800 bg-[#0c1527] text-slate-400 transition-colors hover:border-slate-700 hover:text-white"
             >
-              <Settings size={15} />
+              <Settings size={14} />
             </button>
 
             {/* User Profile */}
-            <div className="ml-1 flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-cyan-500/30 bg-gradient-to-tr from-cyan-950 to-blue-900 font-bold text-xs text-[#00e5ff] shadow-inner">
+            <div className="ml-0.5 flex items-center gap-2 sm:ml-1 sm:gap-2.5">
+              <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-cyan-500/30 bg-gradient-to-tr from-cyan-950 to-blue-900 font-bold text-xs text-[#00e5ff] shadow-inner">
                 S
               </div>
-              <div className="hidden sm:block">
+              <div className="hidden lg:block">
                 <p className="text-xs font-bold leading-tight text-white">San</p>
                 <p className="text-[10px] font-medium leading-tight text-slate-400">Operations Manager</p>
               </div>
@@ -927,41 +927,41 @@ export default function App() {
       {/* ============================================================== */}
       {/* MAIN TWO-PANEL WORKSPACE                                        */}
       {/* ============================================================== */}
-      <main className="mx-auto w-full flex-1 px-4 py-4 sm:px-6">
+      <main className="mx-auto w-full flex-1 px-2.5 py-3 sm:px-6 sm:py-4">
         {apiError && (
           <div className="mb-3 flex items-center justify-between rounded-xl border border-amber-500/30 bg-amber-950/40 p-2 text-xs text-amber-300">
             <span>{apiError}</span>
             <button type="button" onClick={() => setApiError('')}><X size={13} /></button>
           </div>
         )}
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
           {/* ============================================================ */}
           {/* LEFT PANEL: LIVE FEED (CAMERA STREAMING)                     */}
           {/* ============================================================ */}
-          <div className="flex flex-col justify-between rounded-2xl border border-[#1a2744] bg-[#0b1325] p-4 shadow-2xl">
+          <div className="flex flex-col justify-between rounded-2xl border border-[#1a2744] bg-[#0b1325] p-3 sm:p-4 shadow-2xl">
             {/* Live Feed Header */}
-            <div className="mb-3 flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]" />
-                <h2 className="text-sm font-bold tracking-wider text-white">LIVE FEED</h2>
-                <span className="rounded-full border border-cyan-500/30 bg-cyan-950/40 px-2.5 py-0.5 text-[11px] font-medium text-[#00e5ff]">
+                <h2 className="text-xs sm:text-sm font-bold tracking-wider text-white">LIVE FEED</h2>
+                <span className="rounded-full border border-cyan-500/30 bg-cyan-950/40 px-2 py-0.5 text-[10px] sm:text-[11px] font-medium text-[#00e5ff]">
                   {cameraType === 'USB / Webcam' ? 'USB Camera' : 'RTSP Stream'}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <button
                   type="button"
                   onClick={() => setCameraModalOpen(true)}
-                  className="flex items-center gap-1.5 rounded-xl bg-[#00e5ff] px-3.5 py-1.5 text-xs font-bold text-slate-950 shadow-[0_0_15px_rgba(0,229,255,0.25)] transition-all hover:bg-[#00c8e0]"
+                  className="flex items-center gap-1 sm:gap-1.5 rounded-xl bg-[#00e5ff] px-2.5 sm:px-3.5 py-1.5 text-[11px] sm:text-xs font-bold text-slate-950 shadow-[0_0_15px_rgba(0,229,255,0.25)] transition-all hover:bg-[#00c8e0]"
                 >
                   <Video size={13} />
                   Change Camera
-                  <ChevronDown size={13} />
+                  <ChevronDown size={12} />
                 </button>
                 <button
                   type="button"
                   onClick={disconnectCamera}
-                  className="flex items-center gap-1.5 rounded-xl border border-red-500/50 bg-red-950/20 px-3.5 py-1.5 text-xs font-medium text-red-400 transition-all hover:bg-red-950/40"
+                  className="flex items-center gap-1 sm:gap-1.5 rounded-xl border border-red-500/50 bg-red-950/20 px-2.5 sm:px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-red-400 transition-all hover:bg-red-950/40"
                 >
                   <Power size={13} />
                   Disconnect
@@ -972,7 +972,7 @@ export default function App() {
             {/* Video Viewport Container */}
             <div
               ref={videoContainerRef}
-              className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[#1a2744] bg-black sm:aspect-[16/9]"
+              className="relative aspect-[16/10] sm:aspect-[16/9] w-full min-h-[220px] sm:min-h-[280px] overflow-hidden rounded-2xl border border-[#1a2744] bg-black"
             >
               {/* Media Content */}
               {stream ? (
@@ -987,19 +987,19 @@ export default function App() {
                 <CameraStream playlistUrl={hlsPlaylistUrl} className="h-full w-full" />
               ) : (
                 /* Standby Video Feed */
-                <div className="relative flex h-full w-full flex-col items-center justify-center bg-gradient-to-b from-[#0b1325] to-[#040812] p-6 text-center">
+                <div className="relative flex h-full w-full flex-col items-center justify-center bg-gradient-to-b from-[#0b1325] to-[#040812] p-4 sm:p-6 text-center">
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
-                  <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-800 bg-[#070e1c] text-slate-500 shadow-inner">
-                    <Video size={26} className="text-slate-400" />
+                  <div className="relative z-10 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl border border-slate-800 bg-[#070e1c] text-slate-500 shadow-inner">
+                    <Video size={22} className="text-slate-400 sm:text-[26px]" />
                   </div>
-                  <p className="relative z-10 mt-3 text-xs font-bold tracking-wider text-slate-200">STANDBY • FEED DISCONNECTED</p>
-                  <p className="relative z-10 mt-1 max-w-xs text-[11px] text-slate-500">
+                  <p className="relative z-10 mt-2.5 text-[11px] sm:text-xs font-bold tracking-wider text-slate-200">STANDBY • FEED DISCONNECTED</p>
+                  <p className="relative z-10 mt-1 max-w-xs text-[10px] sm:text-[11px] text-slate-500">
                     Connect an RTSP camera stream or switch to local webcam to view live video telemetry.
                   </p>
                   <button
                     type="button"
                     onClick={() => setCameraModalOpen(true)}
-                    className="relative z-10 mt-4 flex items-center gap-2 rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-4 py-2 text-xs font-bold text-[#00e5ff] transition-all hover:bg-[#00e5ff]/20 active:scale-95"
+                    className="relative z-10 mt-3 sm:mt-4 flex items-center gap-1.5 sm:gap-2 rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold text-[#00e5ff] transition-all hover:bg-[#00e5ff]/20 active:scale-95"
                   >
                     <Power size={13} />
                     Connect Camera Stream
@@ -1008,74 +1008,74 @@ export default function App() {
               )}
 
               {/* Top-Left Live Status Pill */}
-              <div className="absolute left-3 top-3 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-black/70 px-3 py-1 text-xs text-white backdrop-blur-md">
-                <span className={`h-2 w-2 rounded-full ${cameraStatus === 'Streaming' ? 'bg-rose-500 shadow-[0_0_8px_#f43f5e]' : 'bg-amber-400'}`} />
-                <span className="text-[11px] font-bold tracking-wider">{cameraStatus === 'Streaming' ? 'LIVE' : cameraStatus.toUpperCase()}</span>
-                <span className="text-[10px] text-slate-300">1080p @ 30fps</span>
+              <div className="absolute left-2 top-2 sm:left-3 sm:top-3 z-20 flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-black/70 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs text-white backdrop-blur-md">
+                <span className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full ${cameraStatus === 'Streaming' ? 'bg-rose-500 shadow-[0_0_8px_#f43f5e]' : 'bg-amber-400'}`} />
+                <span className="text-[10px] sm:text-[11px] font-bold tracking-wider">{cameraStatus === 'Streaming' ? 'LIVE' : cameraStatus.toUpperCase()}</span>
+                <span className="hidden sm:inline text-[10px] text-slate-300">1080p @ 30fps</span>
               </div>
 
               {/* Top-Right Camera Identifier Pill */}
-              <div className="absolute right-3 top-3 z-20 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/70 px-3 py-1 text-xs text-white backdrop-blur-md">
-                <Camera size={13} className="text-[#00e5ff]" />
-                <span className="text-[11px] font-medium">{activeCameraName}</span>
+              <div className="absolute right-2 top-2 sm:right-3 sm:top-3 z-20 flex max-w-[150px] sm:max-w-xs items-center gap-1.5 truncate rounded-full border border-white/10 bg-black/70 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs text-white backdrop-blur-md">
+                <Camera size={12} className="shrink-0 text-[#00e5ff]" />
+                <span className="truncate text-[10px] sm:text-[11px] font-medium">{activeCameraName}</span>
               </div>
 
               {/* Bottom Video Floating Telemetry Dock */}
-              <div className="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between rounded-xl border border-white/10 bg-black/75 px-4 py-2 backdrop-blur-md">
-                <div className="flex items-center gap-6">
+              <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 z-20 flex items-center justify-between rounded-xl border border-white/10 bg-black/75 px-2.5 sm:px-4 py-1.5 sm:py-2 backdrop-blur-md">
+                <div className="flex items-center gap-3 sm:gap-6">
                   <div>
-                    <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400">SIGNAL LATENCY</p>
-                    <p className="mt-0.5 font-mono text-xs font-bold text-[#00e5ff]">{signalLatency}</p>
+                    <p className="text-[8px] sm:text-[9px] font-bold uppercase tracking-wider text-slate-400">LATENCY</p>
+                    <p className="mt-0.5 font-mono text-[11px] sm:text-xs font-bold text-[#00e5ff]">{signalLatency}</p>
                   </div>
-                  <div className="border-l border-slate-700/80 pl-6">
-                    <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400">CODEC</p>
-                    <p className="mt-0.5 font-mono text-xs font-medium text-white">{codec}</p>
+                  <div className="border-l border-slate-700/80 pl-3 sm:pl-6">
+                    <p className="text-[8px] sm:text-[9px] font-bold uppercase tracking-wider text-slate-400">CODEC</p>
+                    <p className="mt-0.5 font-mono text-[11px] sm:text-xs font-medium text-white">{codec}</p>
                   </div>
-                  <div className="border-l border-slate-700/80 pl-6">
-                    <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400">BITRATE</p>
-                    <p className="mt-0.5 font-mono text-xs font-bold text-[#00e5ff]">{bitrate}</p>
+                  <div className="hidden border-l border-slate-700/80 pl-3 sm:block sm:pl-6">
+                    <p className="text-[8px] sm:text-[9px] font-bold uppercase tracking-wider text-slate-400">BITRATE</p>
+                    <p className="mt-0.5 font-mono text-[11px] sm:text-xs font-bold text-[#00e5ff]">{bitrate}</p>
                   </div>
                 </div>
 
                 {/* Dock Controls */}
-                <div className="flex items-center gap-1.5 text-slate-300">
+                <div className="flex items-center gap-1 text-slate-300">
                   <button
                     type="button"
                     onClick={toggleFullscreen}
                     title="Fullscreen Mode"
-                    className="rounded-lg p-1.5 transition-colors hover:bg-white/10 hover:text-white"
+                    className="rounded-lg p-1 transition-colors hover:bg-white/10 hover:text-white"
                   >
-                    {isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+                    {isFullscreen ? <Minimize2 size={13} /> : <Maximize2 size={13} />}
                   </button>
                   <button
                     type="button"
                     onClick={() => setStreamSettingsOpen(true)}
                     title="Stream Settings"
-                    className="rounded-lg p-1.5 transition-colors hover:bg-white/10 hover:text-white"
+                    className="rounded-lg p-1 transition-colors hover:bg-white/10 hover:text-white"
                   >
-                    <SlidersHorizontal size={14} />
+                    <SlidersHorizontal size={13} />
                   </button>
                 </div>
               </div>
             </div>
 
             {/* Video Card Footer Rows */}
-            <div className="mt-3.5 space-y-2 border-t border-[#141f36] pt-3">
-              <div className="flex items-center justify-between text-xs">
+            <div className="mt-3 space-y-1.5 border-t border-[#141f36] pt-2.5 text-[11px] sm:text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <div className="flex items-center gap-1.5 text-slate-400">
-                  <Link2 size={14} className="text-[#00e5ff]" />
-                  <span>Active Stream Endpoint:</span>
+                  <Link2 size={13} className="text-[#00e5ff]" />
+                  <span>Active Endpoint:</span>
                 </div>
-                <span className="rounded-lg border border-cyan-500/30 bg-[#06182c] px-3 py-1 font-mono text-xs text-cyan-300">
+                <span className="truncate rounded-lg border border-cyan-500/30 bg-[#06182c] px-2.5 py-0.5 font-mono text-[10px] sm:text-xs text-cyan-300">
                   {endpoint}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <div className="flex items-center gap-1.5 text-emerald-400">
-                  <CheckCircle2 size={14} />
-                  <span>Webcam permission granted & WebSocket active</span>
+                  <CheckCircle2 size={13} />
+                  <span>Camera stream active & synchronized</span>
                 </div>
-                <span className="font-mono text-slate-400">Buffer: {bufferMs}ms</span>
+                <span className="font-mono text-[10px] sm:text-xs text-slate-400">Buffer: {bufferMs}ms</span>
               </div>
             </div>
           </div>
@@ -1083,38 +1083,38 @@ export default function App() {
           {/* ============================================================ */}
           {/* RIGHT PANEL: MAP & ROUTE TELEMETRY                           */}
           {/* ============================================================ */}
-          <div className="flex flex-col justify-between rounded-2xl border border-[#1a2744] bg-[#0b1325] p-4 shadow-2xl">
+          <div className="flex flex-col justify-between rounded-2xl border border-[#1a2744] bg-[#0b1325] p-3 sm:p-4 shadow-2xl">
             {/* ============================================================== */}
             {/* GOOGLE MAPS STYLE DIRECTIONS PANEL: FROM & TO INPUTS           */}
             {/* ============================================================== */}
-            <div className="mb-3 rounded-2xl border border-[#1a2744] bg-[#070e1c] p-3.5 shadow-inner">
-              <div className="mb-2.5 flex items-center justify-between border-b border-slate-800/80 pb-2">
-                <div className="flex items-center gap-2">
-                  <Navigation size={15} className="text-[#00e5ff]" />
-                  <span className="font-mono text-xs font-black tracking-wider text-slate-200">
+            <div className="mb-3 rounded-2xl border border-[#1a2744] bg-[#070e1c] p-2.5 sm:p-3.5 shadow-inner">
+              <div className="mb-2 flex items-center justify-between border-b border-slate-800/80 pb-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <Navigation size={14} className="text-[#00e5ff]" />
+                  <span className="font-mono text-[11px] sm:text-xs font-black tracking-wider text-slate-200">
                     ROUTE NAVIGATION
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="rounded-full border border-cyan-500/30 bg-cyan-950/60 px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#00e5ff]">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="rounded-full border border-cyan-500/30 bg-cyan-950/60 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] font-bold text-[#00e5ff]">
                     {remainingDist} • {remainingTime}
                   </span>
-                  <span className="font-mono text-[10px] text-cyan-300">
+                  <span className="font-mono text-[9px] sm:text-[10px] text-cyan-300">
                     {telemetrySpeed} km/h
                   </span>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2 sm:gap-2.5">
                 {/* FROM (ORIGIN) INPUT */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <div
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10"
+                    className="flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10"
                     title="Starting Location"
                   >
-                    <div className="h-2.5 w-2.5 rounded-full border-2 border-emerald-400 bg-transparent" />
+                    <div className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full border-2 border-emerald-400 bg-transparent" />
                   </div>
-                  <div className="relative flex flex-1 items-center rounded-xl border border-[#1a2744] bg-[#0b1325] px-3 py-1.5 text-xs text-white transition-all focus-within:border-emerald-500/70 focus-within:ring-1 focus-within:ring-emerald-500/30">
+                  <div className="relative flex flex-1 items-center rounded-xl border border-[#1a2744] bg-[#0b1325] px-2 sm:px-3 py-1.5 text-xs text-white transition-all focus-within:border-emerald-500/70 focus-within:ring-1 focus-within:ring-emerald-500/30">
                     <input
                       type="text"
                       value={fromText}
@@ -1123,17 +1123,17 @@ export default function App() {
                         if (e.key === 'Enter') void handleFromSubmit()
                       }}
                       placeholder="Choose starting point, address, or lat, lng..."
-                      className="w-full bg-transparent text-xs text-white outline-none placeholder:text-slate-500"
+                      className="w-full min-w-0 bg-transparent text-xs text-white outline-none placeholder:text-slate-500"
                     />
-                    <div className="ml-2 flex items-center gap-1">
+                    <div className="ml-1 sm:ml-2 flex shrink-0 items-center gap-0.5 sm:gap-1">
                       {fromText && (
                         <button
                           type="button"
                           title="Clear starting location"
                           onClick={handleClearFrom}
-                          className="rounded p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-rose-400"
+                          className="rounded p-0.5 sm:p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-rose-400"
                         >
-                          <X size={14} />
+                          <X size={13} />
                         </button>
                       )}
                       <button
@@ -1141,29 +1141,29 @@ export default function App() {
                         title="Use My Current GPS Location"
                         onClick={locateUser}
                         disabled={isLocating}
-                        className="rounded p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-emerald-400 disabled:opacity-50"
+                        className="rounded p-0.5 sm:p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-emerald-400 disabled:opacity-50"
                       >
-                        <LocateFixed size={14} className={isLocating ? 'animate-spin text-emerald-400' : ''} />
+                        <LocateFixed size={13} className={isLocating ? 'animate-spin text-emerald-400' : ''} />
                       </button>
                       <button
                         type="button"
                         title={pickMode === 'from' ? 'Cancel map picking' : 'Pick Starting Location on map'}
                         onClick={() => setPickMode(p => (p === 'from' ? 'none' : 'from'))}
-                        className={`rounded p-1 transition-colors ${
+                        className={`rounded p-0.5 sm:p-1 transition-colors ${
                           pickMode === 'from'
                             ? 'bg-emerald-500/30 font-bold text-emerald-300'
                             : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                         }`}
                       >
-                        <Crosshair size={14} />
+                        <Crosshair size={13} />
                       </button>
                       <button
                         type="button"
                         title="Search Origin"
                         onClick={() => void handleFromSubmit()}
-                        className="rounded p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+                        className="rounded p-0.5 sm:p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
                       >
-                        <Search size={14} />
+                        <Search size={13} />
                       </button>
                     </div>
                   </div>
@@ -1173,21 +1173,21 @@ export default function App() {
                     type="button"
                     title="Swap Origin and Destination"
                     onClick={handleSwapLocations}
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-[#1a2744] bg-[#0b1325] text-slate-400 transition-all hover:border-[#00e5ff] hover:text-[#00e5ff] active:scale-95"
+                    className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-xl border border-[#1a2744] bg-[#0b1325] text-slate-400 transition-all hover:border-[#00e5ff] hover:text-[#00e5ff] active:scale-95"
                   >
-                    <ArrowUpDown size={14} />
+                    <ArrowUpDown size={13} />
                   </button>
                 </div>
 
                 {/* TO (DESTINATION) INPUT */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <div
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-rose-500/40 bg-rose-500/10"
+                    className="flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-full border border-rose-500/40 bg-rose-500/10"
                     title="Destination"
                   >
-                    <div className="h-2.5 w-2.5 rounded-full bg-[#EA4335] shadow-[0_0_8px_#EA4335]" />
+                    <div className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#EA4335] shadow-[0_0_8px_#EA4335]" />
                   </div>
-                  <div className="relative flex flex-1 items-center rounded-xl border border-[#1a2744] bg-[#0b1325] px-3 py-1.5 text-xs text-white transition-all focus-within:border-rose-500/70 focus-within:ring-1 focus-within:ring-rose-500/30">
+                  <div className="relative flex flex-1 items-center rounded-xl border border-[#1a2744] bg-[#0b1325] px-2 sm:px-3 py-1.5 text-xs text-white transition-all focus-within:border-rose-500/70 focus-within:ring-1 focus-within:ring-rose-500/30">
                     <input
                       type="text"
                       value={toText}
@@ -1196,38 +1196,38 @@ export default function App() {
                         if (e.key === 'Enter') void handleToSubmit()
                       }}
                       placeholder="Choose destination, address, or lat, lng..."
-                      className="w-full bg-transparent text-xs text-white outline-none placeholder:text-slate-500"
+                      className="w-full min-w-0 bg-transparent text-xs text-white outline-none placeholder:text-slate-500"
                     />
-                    <div className="ml-2 flex items-center gap-1">
+                    <div className="ml-1 sm:ml-2 flex shrink-0 items-center gap-0.5 sm:gap-1">
                       {toText && (
                         <button
                           type="button"
                           title="Clear destination"
                           onClick={handleClearTo}
-                          className="rounded p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-rose-400"
+                          className="rounded p-0.5 sm:p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-rose-400"
                         >
-                          <X size={14} />
+                          <X size={13} />
                         </button>
                       )}
                       <button
                         type="button"
                         title={pickMode === 'to' ? 'Cancel map picking' : 'Pick Destination on map'}
                         onClick={() => setPickMode(p => (p === 'to' ? 'none' : 'to'))}
-                        className={`rounded p-1 transition-colors ${
+                        className={`rounded p-0.5 sm:p-1 transition-colors ${
                           pickMode === 'to'
                             ? 'bg-rose-500/30 font-bold text-rose-300'
                             : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                         }`}
                       >
-                        <Crosshair size={14} />
+                        <Crosshair size={13} />
                       </button>
                       <button
                         type="button"
                         title="Search Destination"
                         onClick={() => void handleToSubmit()}
-                        className="rounded p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+                        className="rounded p-0.5 sm:p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
                       >
-                        <Search size={14} />
+                        <Search size={13} />
                       </button>
                     </div>
                   </div>
@@ -1241,16 +1241,16 @@ export default function App() {
                         setMapBounds(L.latLngBounds(realRoute.map(p => L.latLng(p[0], p[1]))))
                       }
                     }}
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-[#1a2744] bg-[#0b1325] text-slate-400 transition-all hover:border-[#00e5ff] hover:text-[#00e5ff]"
+                    className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-xl border border-[#1a2744] bg-[#0b1325] text-slate-400 transition-all hover:border-[#00e5ff] hover:text-[#00e5ff]"
                   >
-                    <Navigation size={14} />
+                    <Navigation size={13} />
                   </button>
                 </div>
               </div>
 
               {/* COORDINATES & LIVE ROUTE METRICS BADGES */}
-              <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 border-t border-slate-800/80 pt-2 text-[11px]">
-                <div className="flex flex-wrap items-center gap-3">
+              <div className="mt-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2 border-t border-slate-800/80 pt-2 text-[10px] sm:text-[11px]">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <div className="flex items-center gap-1 font-mono text-slate-400">
                     <span className="font-bold text-emerald-400">From:</span>
                     <span>{formatCoordinate(startPoint)}</span>
@@ -1258,7 +1258,7 @@ export default function App() {
                       type="button"
                       onClick={() => setEditingCoords('start')}
                       title="Edit latitude & longitude"
-                      className="ml-1 text-slate-500 transition-colors hover:text-white"
+                      className="ml-0.5 text-slate-500 transition-colors hover:text-white"
                     >
                       <Edit3 size={11} />
                     </button>
@@ -1271,20 +1271,20 @@ export default function App() {
                       type="button"
                       onClick={() => setEditingCoords('dest')}
                       title="Edit latitude & longitude"
-                      className="ml-1 text-slate-500 transition-colors hover:text-white"
+                      className="ml-0.5 text-slate-500 transition-colors hover:text-white"
                     >
                       <Edit3 size={11} />
                     </button>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <span className="rounded-full border border-cyan-500/30 bg-cyan-950/60 px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#00e5ff]">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <span className="rounded-full border border-cyan-500/30 bg-cyan-950/60 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] font-bold text-[#00e5ff]">
                     🚗 {routeDistance} • {travelTime}
                   </span>
                   {pickMode !== 'none' && (
-                    <span className="animate-pulse rounded-full border border-amber-500/40 bg-amber-950/60 px-2 py-0.5 text-[10px] font-bold text-amber-300">
-                      Click map to place {pickMode === 'from' ? 'Starting Location' : 'Destination'}
+                    <span className="animate-pulse rounded-full border border-amber-500/40 bg-amber-950/60 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold text-amber-300">
+                      Click map to place {pickMode === 'from' ? 'Starting Point' : 'Destination'}
                     </span>
                   )}
                 </div>
@@ -1292,7 +1292,7 @@ export default function App() {
             </div>
 
             {/* Map Viewport Area */}
-            <div className="relative isolate z-0 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[#1a2744] sm:aspect-[16/9]">
+            <div className="relative isolate z-0 h-[340px] sm:h-auto sm:aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[#1a2744]">
               <MapContainer
                 center={arrowPosition}
                 zoom={13}
@@ -1430,17 +1430,18 @@ export default function App() {
               {/* ============================================================== */}
 
               {/* 1. Google Maps Style Satellite View Toggle (Bottom-Left inside map) */}
-              <div className="absolute bottom-3 left-3 z-10 flex items-end gap-2">
+              <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 z-10 flex items-end gap-1.5 sm:gap-2">
                 <button
                   type="button"
                   title={mapTileStyle === 'satellite' ? 'Switch to Map View' : 'Switch to Satellite View'}
                   onClick={() => setMapTileStyle(s => (s === 'satellite' ? 'dark' : 'satellite'))}
-                  className="group relative flex h-13 w-13 flex-col items-center justify-end overflow-hidden rounded-xl border-2 border-white/25 bg-slate-900 shadow-2xl transition-all hover:scale-105 active:scale-95"
+                  className="group relative flex h-10 w-10 sm:h-12 sm:w-12 flex-col items-center justify-end overflow-hidden rounded-xl border-2 border-white/25 bg-slate-900 shadow-2xl transition-all hover:scale-105 active:scale-95"
                 >
                   {/* Miniature imagery preview box */}
                   {mapTileStyle === 'satellite' ? (
                     <div className="absolute inset-0 flex items-center justify-center bg-[#070e1c]">
-                      <MapIcon size={20} className="text-[#00e5ff]" />
+                      <MapIcon size={16} className="text-[#00e5ff] sm:hidden" />
+                      <MapIcon size={20} className="text-[#00e5ff] hidden sm:block" />
                     </div>
                   ) : (
                     <div
@@ -1450,7 +1451,7 @@ export default function App() {
                       }}
                     />
                   )}
-                  <div className="relative z-10 w-full bg-black/80 py-0.5 text-center text-[9px] font-black tracking-wider text-white backdrop-blur-sm">
+                  <div className="relative z-10 w-full bg-black/80 py-0.5 text-center text-[8px] sm:text-[9px] font-black tracking-wider text-white backdrop-blur-sm">
                     {mapTileStyle === 'satellite' ? 'Map' : 'Satellite'}
                   </div>
                 </button>
@@ -1460,7 +1461,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setShowSatelliteLabels(v => !v)}
-                    className={`rounded-lg border px-2.5 py-1 text-[10px] font-bold backdrop-blur-md transition-all shadow-lg ${
+                    className={`rounded-lg border px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-bold backdrop-blur-md transition-all shadow-lg ${
                       showSatelliteLabels
                         ? 'border-cyan-500/50 bg-cyan-950/80 text-[#00e5ff]'
                         : 'border-slate-700 bg-slate-900/80 text-slate-400'
@@ -1476,7 +1477,7 @@ export default function App() {
                     type="button"
                     title={mapTileStyle === 'dark' ? 'Switch to Street Map' : 'Switch to Dark Mode'}
                     onClick={() => setMapTileStyle(s => (s === 'dark' ? 'streets' : 'dark'))}
-                    className="rounded-lg border border-slate-700 bg-slate-900/80 px-2 py-1 text-[10px] font-semibold text-slate-300 backdrop-blur-md transition-colors hover:text-white"
+                    className="rounded-lg border border-slate-700 bg-slate-900/80 px-2 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-semibold text-slate-300 backdrop-blur-md transition-colors hover:text-white"
                   >
                     {mapTileStyle === 'dark' ? 'Streets' : 'Dark'}
                   </button>
@@ -1484,26 +1485,26 @@ export default function App() {
               </div>
 
               {/* 2. Top-Left OSRM Live Route HUD Banner */}
-              <div className="absolute left-3 top-3 z-10 flex items-center gap-2 rounded-xl border border-cyan-500/30 bg-[#070e1c]/90 px-3 py-1.5 text-xs shadow-2xl backdrop-blur-md">
-                <Navigation size={13} className="rotate-45 text-[#00e5ff]" />
+              <div className="absolute left-2.5 top-2.5 sm:left-3 sm:top-3 z-10 flex max-w-[calc(100%-20px)] items-center gap-1.5 sm:gap-2 rounded-xl border border-cyan-500/30 bg-[#070e1c]/90 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs shadow-2xl backdrop-blur-md">
+                <Navigation size={12} className="rotate-45 text-[#00e5ff] shrink-0" />
                 <span className="font-mono font-black text-white">{remainingDist}</span>
                 <span className="text-slate-400">•</span>
                 <span className="font-mono font-black text-[#00e5ff]">{remainingTime}</span>
-                <span className="text-slate-500">•</span>
-                <span className="font-mono text-[10px] text-cyan-300">{telemetrySpeed} km/h</span>
-                <span className="hidden text-[10px] text-slate-400 sm:inline">({routeSummary})</span>
-                {isCalculatingRoute && <RefreshCw size={11} className="ml-1 animate-spin text-cyan-400" />}
+                <span className="text-slate-500 hidden xs:inline">•</span>
+                <span className="font-mono text-[10px] text-cyan-300 hidden xs:inline">{telemetrySpeed} km/h</span>
+                <span className="hidden text-[10px] text-slate-400 md:inline">({routeSummary})</span>
+                {isCalculatingRoute && <RefreshCw size={11} className="ml-1 animate-spin text-cyan-400 shrink-0" />}
               </div>
 
               {/* 3. Top-Center Map Picking Banner */}
               {pickMode !== 'none' && (
-                <div className="absolute left-1/2 top-3 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full border border-cyan-400 bg-cyan-950/95 px-4 py-1.5 text-xs font-semibold text-white shadow-[0_0_20px_rgba(0,229,255,0.4)] backdrop-blur-md">
-                  <span className="h-2 w-2 animate-ping rounded-full bg-cyan-400" />
-                  <span>Click anywhere on map to set {pickMode === 'from' ? 'Starting Location' : 'Destination'}</span>
+                <div className="absolute left-1/2 top-2.5 sm:top-3 z-20 flex max-w-[90vw] -translate-x-1/2 items-center gap-1.5 sm:gap-2 rounded-full border border-cyan-400 bg-cyan-950/95 px-3 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-white shadow-[0_0_20px_rgba(0,229,255,0.4)] backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 shrink-0 animate-ping rounded-full bg-cyan-400" />
+                  <span className="truncate">Click map to set {pickMode === 'from' ? 'Start' : 'Destination'}</span>
                   <button
                     type="button"
                     onClick={() => setPickMode('none')}
-                    className="ml-2 rounded-full bg-slate-800 p-0.5 text-slate-300 hover:text-white"
+                    className="ml-1 sm:ml-2 rounded-full bg-slate-800 p-0.5 text-slate-300 hover:text-white"
                   >
                     <X size={12} />
                   </button>
@@ -1511,16 +1512,16 @@ export default function App() {
               )}
 
               {/* 4. Google Maps Style "Get Current Location" Button & Zoom Stack (Bottom-Right) */}
-              <div className="absolute bottom-3 right-3 z-10 flex flex-col items-end gap-2">
+              <div className="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 z-10 flex flex-col items-end gap-1.5 sm:gap-2">
                 <button
                   type="button"
                   title="Get Current Location (Real GPS)"
                   onClick={locateUser}
                   disabled={isLocating}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-[#070e1c]/90 text-[#00e5ff] shadow-2xl backdrop-blur-md transition-all hover:bg-cyan-500/20 active:scale-95 disabled:opacity-50"
+                  className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-white/20 bg-[#070e1c]/90 text-[#00e5ff] shadow-2xl backdrop-blur-md transition-all hover:bg-cyan-500/20 active:scale-95 disabled:opacity-50"
                 >
                   <Crosshair
-                    size={18}
+                    size={16}
                     className={isLocating ? 'animate-spin text-cyan-400' : 'text-[#00e5ff]'}
                   />
                 </button>
@@ -1534,7 +1535,7 @@ export default function App() {
                       setMapZoomAction('in')
                       setTimeout(() => setMapZoomAction(null), 100)
                     }}
-                    className="p-2 text-sm font-bold text-slate-200 transition-colors hover:bg-slate-800 hover:text-white"
+                    className="px-2.5 py-1 sm:p-2 text-xs sm:text-sm font-bold text-slate-200 transition-colors hover:bg-slate-800 hover:text-white"
                   >
                     +
                   </button>
@@ -1546,7 +1547,7 @@ export default function App() {
                       setMapZoomAction('out')
                       setTimeout(() => setMapZoomAction(null), 100)
                     }}
-                    className="p-2 text-sm font-bold text-slate-200 transition-colors hover:bg-slate-800 hover:text-white"
+                    className="px-2.5 py-1 sm:p-2 text-xs sm:text-sm font-bold text-slate-200 transition-colors hover:bg-slate-800 hover:text-white"
                   >
                     -
                   </button>
@@ -1555,8 +1556,8 @@ export default function App() {
             </div>
 
             {/* Map Action Controls Footer */}
-            <div className="mt-3.5 flex flex-wrap items-center justify-between gap-3 border-t border-[#141f36] pt-3">
-              <div className="flex items-center gap-2">
+            <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3 border-t border-[#141f36] pt-3">
+              <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
                 <button
                   type="button"
                   disabled={!startPoint || !destinationPoint || realRoute.length < 2}
@@ -1567,14 +1568,14 @@ export default function App() {
                     }
                     setTracking('Tracking')
                   }}
-                  className={`flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+                  className={`flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl px-3 sm:px-4 py-2 text-xs font-bold transition-all ${
                     tracking === 'Tracking'
                       ? 'bg-[#00e5ff] text-slate-950 shadow-[0_0_18px_rgba(0,229,255,0.4)]'
                       : 'border border-cyan-500/50 bg-cyan-950/40 text-[#00e5ff] hover:bg-[#00e5ff] hover:text-slate-950 disabled:opacity-40 disabled:cursor-not-allowed'
                   }`}
                 >
-                  <Navigation size={13} className="rotate-45" />
-                  {tracking === 'Tracking' ? 'Tracking Active' : 'Start Direction'}
+                  <Navigation size={13} className="rotate-45 shrink-0" />
+                  <span>{tracking === 'Tracking' ? 'Tracking Active' : 'Start Direction'}</span>
                 </button>
                 <button
                   type="button"
@@ -1582,14 +1583,14 @@ export default function App() {
                   onClick={() => {
                     setTracking('Paused')
                   }}
-                  className={`flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
+                  className={`flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl border px-3 sm:px-3.5 py-2 text-xs font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
                     tracking === 'Paused'
                       ? 'border-amber-400 bg-amber-400/20 text-amber-300'
                       : 'border-slate-700 bg-slate-800/40 text-slate-300 hover:bg-slate-800 hover:text-white'
                   }`}
                 >
-                  <Pause size={13} />
-                  Pause
+                  <Pause size={13} className="shrink-0" />
+                  <span>Pause</span>
                 </button>
                 <button
                   type="button"
@@ -1608,21 +1609,21 @@ export default function App() {
                       setTelemetrySpeed('0')
                     }
                   }}
-                  className={`flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
+                  className={`flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl border px-3 sm:px-3.5 py-2 text-xs font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
                     tracking === 'Stopped'
                       ? 'border-rose-500 bg-rose-500/20 text-rose-400'
                       : 'border-red-500/40 bg-red-950/20 text-red-400 hover:bg-red-950/40'
                   }`}
                 >
-                  <Square size={13} />
-                  Stop
+                  <Square size={13} className="shrink-0" />
+                  <span>Stop</span>
                 </button>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`h-2 w-2 rounded-full ${
+                    className={`h-2 w-2 rounded-full shrink-0 ${
                       tracking === 'Tracking'
                         ? 'bg-[#00e5ff] shadow-[0_0_8px_#00e5ff]'
                         : tracking === 'Paused'
@@ -1630,7 +1631,7 @@ export default function App() {
                         : 'bg-slate-500'
                     }`}
                   />
-                  <span className="text-xs font-semibold text-white">
+                  <span className="text-[11px] sm:text-xs font-semibold text-white">
                     {tracking === 'Tracking' ? 'Live Tracking Active' : tracking === 'Paused' ? 'Tracking Paused' : 'Route Ready (Stopped)'}
                   </span>
                 </div>
@@ -1647,7 +1648,7 @@ export default function App() {
                       setTracking('Tracking')
                     }
                   }}
-                  className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
+                  className={`hidden sm:inline-block rounded-lg border px-3 py-1.5 text-xs font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
                     tracking === 'Tracking'
                       ? 'border-[#00e5ff] bg-cyan-950/40 text-[#00e5ff]'
                       : 'border-[#1a2744] text-slate-400 hover:border-slate-600 hover:text-white'
@@ -1664,11 +1665,11 @@ export default function App() {
       {/* ============================================================== */}
       {/* BOTTOM TELEMETRY FOOTER                                         */}
       {/* ============================================================== */}
-      <footer className="border-t border-[#141f36] bg-[#070e1c] px-4 py-2.5 sm:px-6">
-        <div className="mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+      <footer className="border-t border-[#141f36] bg-[#070e1c] px-3.5 py-2.5 sm:px-6">
+        <div className="mx-auto flex flex-col sm:flex-row flex-wrap items-center justify-between gap-2 sm:gap-3 text-center sm:text-left text-[11px] sm:text-xs">
           {/* Left: Django Channels WebSocket Status */}
-          <div className="flex items-center gap-2">
-            <span className="text-slate-400">Django Channels WebSocket:</span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="text-slate-400">WebSocket:</span>
             <span className="font-bold text-emerald-400">
               {backendStatus === 'Connected' ? 'CONNECTED (wss://)' : `PENDING (${backendStatus})`}
             </span>
@@ -1676,17 +1677,17 @@ export default function App() {
 
           {/* Middle: GPS Receiver NMEA specs */}
           <div className="flex items-center gap-1.5 text-slate-400">
-            <Cpu size={14} className="text-[#00e5ff]" />
+            <Cpu size={13} className="text-[#00e5ff] shrink-0" />
             <span>GPS Receiver: NMEA 0183 (10Hz)</span>
           </div>
 
           {/* Right: GPS Accuracy & Version */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <div className="flex items-center gap-1.5 text-emerald-400">
-              <ShieldCheck size={14} />
-              <span>GPS Accuracy: 1.2m HDOP</span>
+              <ShieldCheck size={13} className="shrink-0" />
+              <span>GPS: 1.2m HDOP</span>
             </div>
-            <span className="font-mono text-slate-500">React + TypeScript Frontend v2.4</span>
+            <span className="font-mono text-slate-500">Frontend v2.4</span>
           </div>
         </div>
       </footer>
@@ -1695,8 +1696,8 @@ export default function App() {
       {/* MODAL: CHANGE CAMERA MODAL                                      */}
       {/* ============================================================== */}
       {cameraModalOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-4 backdrop-blur-md">
-          <div className="w-full max-w-md rounded-2xl border border-[#1a2744] bg-[#0c1527] p-5 shadow-2xl">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-3 sm:p-4 backdrop-blur-md">
+          <div className="w-full max-w-[95vw] sm:max-w-md max-h-[85vh] overflow-y-auto rounded-2xl border border-[#1a2744] bg-[#0c1527] p-4 sm:p-5 shadow-2xl">
             <div className="mb-4 flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2">
                 <Video size={18} className="text-[#00e5ff]" />
@@ -1718,7 +1719,7 @@ export default function App() {
                   key={type}
                   type="button"
                   onClick={() => setCameraType(type)}
-                  className={`rounded-xl border p-2.5 text-center transition-all ${
+                  className={`rounded-xl border p-2 sm:p-2.5 text-center transition-all ${
                     cameraType === type
                       ? 'border-[#00e5ff] bg-cyan-950/40 text-[#00e5ff]'
                       : 'border-[#1a2744] bg-[#070e1c] text-slate-400 hover:border-slate-700'
@@ -1740,7 +1741,7 @@ export default function App() {
                   value={cameraUrl}
                   onChange={e => setCameraUrl(e.target.value)}
                   placeholder="rtsp://101.0.0.44:8554/live"
-                  className="w-full rounded-xl border border-[#1a2744] bg-[#070e1c] px-3.5 py-2.5 font-mono text-xs text-white outline-none focus:border-[#00e5ff]"
+                  className="w-full rounded-xl border border-[#1a2744] bg-[#070e1c] px-3.5 py-2 font-mono text-xs text-white outline-none focus:border-[#00e5ff]"
                 />
               </div>
             )}
@@ -1803,8 +1804,8 @@ export default function App() {
       {/* MODAL: STREAM TELEMETRY SETTINGS                                */}
       {/* ============================================================== */}
       {streamSettingsOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-4 backdrop-blur-md">
-          <div className="w-full max-w-sm rounded-2xl border border-[#1a2744] bg-[#0c1527] p-5 shadow-2xl">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-3 sm:p-4 backdrop-blur-md">
+          <div className="w-full max-w-[95vw] sm:max-w-sm max-h-[85vh] overflow-y-auto rounded-2xl border border-[#1a2744] bg-[#0c1527] p-4 sm:p-5 shadow-2xl">
             <div className="mb-4 flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2">
                 <SlidersHorizontal size={16} className="text-[#00e5ff]" />
@@ -1876,8 +1877,8 @@ export default function App() {
       {/* MODAL: EDIT COORDINATES                                         */}
       {/* ============================================================== */}
       {editingCoords && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-4 backdrop-blur-md">
-          <div className="w-full max-w-sm rounded-2xl border border-[#1a2744] bg-[#0c1527] p-5 shadow-2xl">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-3 sm:p-4 backdrop-blur-md">
+          <div className="w-full max-w-[95vw] sm:max-w-sm max-h-[85vh] overflow-y-auto rounded-2xl border border-[#1a2744] bg-[#0c1527] p-4 sm:p-5 shadow-2xl">
             <h3 className="mb-3 text-sm font-bold text-white">
               Edit {editingCoords === 'start' ? 'Start Location' : 'Destination'}
             </h3>
@@ -1943,12 +1944,13 @@ export default function App() {
           </div>
         </div>
       )}
+
       {/* ============================================================== */}
       {/* MODAL: OPERATIONS & SYSTEM SETTINGS                            */}
       {/* ============================================================== */}
       {settingsOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-4 backdrop-blur-md">
-          <div className="w-full max-w-sm rounded-2xl border border-[#1a2744] bg-[#0c1527] p-5 shadow-2xl">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-3 sm:p-4 backdrop-blur-md">
+          <div className="w-full max-w-[95vw] sm:max-w-sm max-h-[85vh] overflow-y-auto rounded-2xl border border-[#1a2744] bg-[#0c1527] p-4 sm:p-5 shadow-2xl">
             <div className="mb-4 flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2">
                 <Settings size={16} className="text-[#00e5ff]" />
