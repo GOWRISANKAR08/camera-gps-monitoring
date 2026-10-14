@@ -46,15 +46,18 @@ type Point = [number, number]
 type CameraType = 'USB / Webcam' | 'RTSP Camera'
 type TrackingState = 'Idle' | 'Tracking' | 'Paused' | 'Stopped'
 
-// Vancouver route waypoints matching the screenshot
+// Default route waypoints in Velachery, Chennai, Tamil Nadu (Vijaya Nagar to Phoenix Marketcity)
 const ROUTE_WAYPOINTS: Point[] = [
-  [49.2785, -123.1215], // Downtown / Yaletown
-  [49.2762, -123.1150],
-  [49.2745, -123.1040],
-  [49.2740, -123.0940],
-  [49.2760, -123.0850], // Midpoint vehicle area
-  [49.2778, -123.0760],
-  [49.2810, -123.0650], // HUB (B) Hastings-Sunrise
+  [12.9775, 80.2215], // Vijaya Nagar, Velachery
+  [12.9785, 80.2212],
+  [12.9805, 80.2211],
+  [12.9822, 80.2217], // Velachery Main Rd / Bypass junction
+  [12.9844, 80.2229],
+  [12.9871, 80.2231], // Velachery Bypass Rd
+  [12.9893, 80.2216],
+  [12.9915, 80.2195],
+  [12.9929, 80.2168],
+  [12.9915, 80.2166], // Phoenix Marketcity, Velachery
 ]
 
 // Geographic Bearing between two points in degrees (0 - 360)
@@ -340,8 +343,8 @@ export default function App() {
   // Map & GPS State
   const [startPoint, setStartPoint] = useState<Point | null>(ROUTE_WAYPOINTS[0])
   const [destinationPoint, setDestinationPoint] = useState<Point | null>(ROUTE_WAYPOINTS[ROUTE_WAYPOINTS.length - 1])
-  const [fromText, setFromText] = useState('Granville & Seymour St, Vancouver')
-  const [toText, setToText] = useState('Hastings-Sunrise Port Terminal, Vancouver')
+  const [fromText, setFromText] = useState('Vijaya Nagar, Velachery, Chennai')
+  const [toText, setToText] = useState('Phoenix Marketcity, Velachery, Chennai')
   const [userLocation, setUserLocation] = useState<Point | null>(null)
   const [userAccuracy, setUserAccuracy] = useState<number | null>(null)
   const [isLocating, setIsLocating] = useState(false)
@@ -360,12 +363,12 @@ export default function App() {
 
   // Real OSRM Route Data
   const [realRoute, setRealRoute] = useState<Point[]>(ROUTE_WAYPOINTS)
-  const [routeDistance, setRouteDistance] = useState('4.6 km')
-  const [travelTime, setTravelTime] = useState('8 mins')
-  const [remainingDist, setRemainingDist] = useState('4.6 km')
-  const [remainingTime, setRemainingTime] = useState('8 mins')
+  const [routeDistance, setRouteDistance] = useState('2.4 km')
+  const [travelTime, setTravelTime] = useState('6 mins')
+  const [remainingDist, setRemainingDist] = useState('2.4 km')
+  const [remainingTime, setRemainingTime] = useState('6 mins')
   const [telemetrySpeed, setTelemetrySpeed] = useState('0')
-  const [routeSummary, setRouteSummary] = useState('Via Hastings St')
+  const [routeSummary, setRouteSummary] = useState('Via Velachery Bypass Rd')
   const [isCalculatingRoute, setIsCalculatingRoute] = useState(false)
 
   // Continuous tracking progress references
@@ -426,10 +429,10 @@ export default function App() {
     }
   }
 
-  // Initial real road route fetch on mount
+  // Initial real road route fetch on mount (fit to Velachery route bounds)
   useEffect(() => {
     if (startPoint && destinationPoint) {
-      void updateRoute(startPoint, destinationPoint, false)
+      void updateRoute(startPoint, destinationPoint, true)
     }
   }, [])
 
@@ -1891,7 +1894,7 @@ export default function App() {
                 <input
                   type="number"
                   step="0.0001"
-                  defaultValue={editingCoords === 'start' ? (startPoint ? startPoint[0] : 12.9797) : (destinationPoint ? destinationPoint[0] : 12.9916)}
+                  defaultValue={editingCoords === 'start' ? (startPoint ? startPoint[0] : 12.9775) : (destinationPoint ? destinationPoint[0] : 12.9915)}
                   id="lat-input"
                   className="w-full rounded-xl border border-[#1a2744] bg-[#070e1c] p-2 text-white outline-none"
                 />
@@ -1901,7 +1904,7 @@ export default function App() {
                 <input
                   type="number"
                   step="0.0001"
-                  defaultValue={editingCoords === 'start' ? (startPoint ? startPoint[1] : -123.1215) : (destinationPoint ? destinationPoint[1] : -123.0650)}
+                  defaultValue={editingCoords === 'start' ? (startPoint ? startPoint[1] : 80.2215) : (destinationPoint ? destinationPoint[1] : 80.2166)}
                   id="lng-input"
                   className="w-full rounded-xl border border-[#1a2744] bg-[#070e1c] p-2 text-white outline-none"
                 />
