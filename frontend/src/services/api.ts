@@ -27,37 +27,10 @@ async function request<T>(
 export interface Camera {
   id: number
   name: string
-  camera_type: 'USB' | 'RTSP' | 'IP'
+  camera_type: 'USB' | 'RTSP'
   stream_url: string
   is_enabled: boolean
   connection_status: string
-}
-
-export interface GPSDevice {
-  id: number
-  name: string
-  device_identifier: string
-  is_enabled: boolean
-  last_latitude: string | null
-  last_longitude: string | null
-  last_seen_at: string | null
-}
-
-export interface Destination {
-  id: number
-  name: string
-  latitude: string
-  longitude: string
-  address: string
-}
-
-export interface TrackingSession {
-  id: number
-  device: number
-  destination: number | null
-  status: 'active' | 'paused' | 'stopped'
-  started_at: string
-  ended_at: string | null
 }
 
 export interface StreamResult {
@@ -77,34 +50,6 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(data),
     }),
-
-  devices: () => request<GPSDevice[]>('/devices/'),
-  currentLocation: (id: number) =>
-    request(`/devices/${id}/location/`),
-
-  destinations: () => request<Destination[]>('/destinations/'),
-  createDestination: (data: Omit<Destination, 'id' | 'created_at'>) =>
-    request<Destination>('/destinations/', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-
-  sessions: () => request<TrackingSession[]>('/sessions/'),
-  startSession: (device: number, destination?: number) =>
-    request<TrackingSession>('/sessions/', {
-      method: 'POST',
-      body: JSON.stringify({
-        device,
-        ...(destination ? { destination } : {}),
-      }),
-    }),
-
-  pauseSession: (id: number) =>
-    request<TrackingSession>(`/sessions/${id}/pause/`, { method: 'POST' }),
-  resumeSession: (id: number) =>
-    request<TrackingSession>(`/sessions/${id}/resume/`, { method: 'POST' }),
-  stopSession: (id: number) =>
-    request<TrackingSession>(`/sessions/${id}/stop/`, { method: 'POST' }),
 
   startStream: (rtsp_url: string) =>
     request<StreamResult>('/streams/start/', {

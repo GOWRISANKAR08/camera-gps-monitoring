@@ -45,10 +45,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'cameras',
-    'gps_tracking',
-    'destinations',
-    'tracking_sessions',
-    'tracking_history',
 ]
 
 MIDDLEWARE = [
