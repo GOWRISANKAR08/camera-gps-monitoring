@@ -431,10 +431,30 @@ export default function App() {
 
   // Initial real road route fetch on mount (fit to Velachery route bounds)
   useEffect(() => {
+    let active = true
     if (startPoint && destinationPoint) {
-      void updateRoute(startPoint, destinationPoint, true)
+      void fetchOsrmRoute(startPoint, destinationPoint).then(res => {
+        if (!active) return
+        setRealRoute(res.pts)
+        setRouteDistance(res.distance)
+        setTravelTime(res.duration)
+        setRemainingDist(res.distance)
+        setRemainingTime(res.duration)
+        setRouteSummary(res.summary)
+        if (res.pts.length > 0) {
+          setArrowPosition(res.pts[0])
+          const bounds = L.latLngBounds(res.pts.map(p => L.latLng(p[0], p[1])))
+          setMapBounds(bounds)
+        }
+        if (res.pts.length > 1) {
+          setArrowHeading(calculateBearing(res.pts[0], res.pts[1]))
+        }
+      })
     }
-  }, [])
+    return () => {
+      active = false
+    }
+  }, [startPoint, destinationPoint])
 
   // Continuous smooth route tracking animation loop via requestAnimationFrame (Zero pauses, zero jumps)
   useEffect(() => {
@@ -525,8 +545,9 @@ export default function App() {
 
   // Clean up media on unmount
   useEffect(() => {
+    const currentWatchId = watchId.current
     return () => {
-      if (watchId.current !== null) navigator.geolocation.clearWatch(watchId.current)
+      if (currentWatchId !== null) navigator.geolocation.clearWatch(currentWatchId)
       stream?.getTracks().forEach(track => track.stop())
       if (activeStreamId) {
         void api.stopStream(activeStreamId).catch(() => {})
@@ -1597,7 +1618,7 @@ export default function App() {
                 </button>
                 <button
                   type="button"
-                  disabled={tracking === 'Stopped' && progressMetersRef.current === 0}
+                  disabled={tracking === 'Stopped'}
                   onClick={() => {
                     setTracking('Stopped')
                     progressMetersRef.current = 0
