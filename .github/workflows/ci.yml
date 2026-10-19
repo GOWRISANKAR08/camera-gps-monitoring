@@ -1,0 +1,43 @@
+name: Project CI
+
+# 1. Triggers: Run automatically when code is pushed to 'main'
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # 2. Frontend Job: Tests your React / TypeScript app
+  frontend-checks:
+    name: Frontend (Lint & Build)
+    runs-on: ubuntu-latest       # GitHub creates a fresh Ubuntu Linux virtual machine
+
+    defaults:
+      run:
+        working-directory: frontend  # Run commands inside the frontend/ folder
+
+    steps:
+      # Step A: Download your repository code into the virtual machine
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step B: Install Node.js v20 on the machine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      # Step C: Install dependencies (npm ci is faster and cleaner for CI)
+      - name: Install Frontend Dependencies
+        run: npm ci
+
+      # Step D: Check for syntax or code quality issues
+      - name: Run ESLint
+        run: npm run lint
+
+      # Step E: Compile TypeScript and build the Vite production files
+      - name: Build Frontend
+        run: npm run build
