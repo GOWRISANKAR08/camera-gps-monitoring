@@ -1,6 +1,5 @@
 name: Project CI
 
-# 1. Triggers: Run automatically when code is pushed to 'main'
 on:
   push:
     branches: [main]
@@ -8,21 +7,19 @@ on:
     branches: [main]
 
 jobs:
-  # 2. Frontend Job: Tests your React / TypeScript app
+  # ----------------------------------------------------
+  # 1. FRONTEND CI: Tests React / TypeScript
+  # ----------------------------------------------------
   frontend-checks:
     name: Frontend (Lint & Build)
-    runs-on: ubuntu-latest       # GitHub creates a fresh Ubuntu Linux virtual machine
-
+    runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: frontend  # Run commands inside the frontend/ folder
-
+        working-directory: frontend
     steps:
-      # Step A: Download your repository code into the virtual machine
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step B: Install Node.js v20 on the machine
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -30,14 +27,50 @@ jobs:
           cache: 'npm'
           cache-dependency-path: frontend/package-lock.json
 
-      # Step C: Install dependencies (npm ci is faster and cleaner for CI)
       - name: Install Frontend Dependencies
         run: npm ci
 
-      # Step D: Check for syntax or code quality issues
       - name: Run ESLint
         run: npm run lint
 
-      # Step E: Compile TypeScript and build the Vite production files
       - name: Build Frontend
         run: npm run build
+
+  # ----------------------------------------------------
+  # 2. BACKEND CI: Tests Django & Database Migrations
+  # ----------------------------------------------------
+  backend-checks:
+    name: Backend (Django Checks & Migrations)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      DJANGO_DEBUG: "False"
+      DJANGO_SECRET_KEY: "ci-secret-key-for-automated-testing-only"
+    steps:
+      # Step A: Download your repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step B: Install Python 3.12
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: backend/requirements.txt
+
+      # Step C: Install backend packages from requirements.txt
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step D: Run Django system health check
+      - name: Run Django System Check
+        run: python manage.py check
+
+      # Step E: Verify no pending or uncommitted database migrations
+      - name: Verify Migrations
+        run: python manage.py makemigrations --check --dry-run
