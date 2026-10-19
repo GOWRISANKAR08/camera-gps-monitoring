@@ -112,7 +112,7 @@ jobs:
             cd ..
 
             echo "🔄 Restarting Services..."
-            sudo systemctl restart gunicorn
+            sudo systemctl restart cameragps
             sudo nginx -t
             sudo systemctl reload nginx
 
